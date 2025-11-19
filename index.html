@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAGORON - About Us</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>জাগরণ - আমাদের সম্পর্কে</title>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN --><script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f7f7f7;
         }
+        /* Common Navigation Styles */
         .nav-button:hover {
             color: #4f46e5;
             background-color: #eef2ff;
@@ -27,92 +27,107 @@
             background-color: #4338ca; /* indigo-700 */
             color: #ffffff;
         }
+        /* Content Card Styles */
         .about-card {
             background-color: white;
             border-radius: 1rem;
             padding: 2rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        /* Sticky/Transparent Navigation Bar Styles */
+        .nav-transparent {
+            /* Opacity set to 30% */
+            background-color: rgba(255, 255, 255, 0.3); 
+            backdrop-filter: blur(8px); /* Add a slight blur effect for modern look */
+        }
+        .cta-button {
+            transition: background-color 0.3s ease, transform 0.1s;
+        }
+        .cta-button:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body class="min-h-screen">
-    <div id="app" class="container mx-auto p-4 md:p-8">
-
-        <!-- Navigation Bar (Identical to Home Page, but 'About' is active) -->
-        <header class="flex flex-col md:flex-row justify-between items-center bg-white p-4 md:p-6 rounded-xl shadow-lg mb-12 sticky top-0 z-50">
+    
+    <!-- হেডার: রেসপনসিভ, স্টিকি, স্বচ্ছ নেভিগেশন বার -->
+    <header class="w-full flex justify-center sticky top-0 z-50 nav-transparent shadow-lg mb-12">
+        <!-- ভিতরের কন্টেইনার কন্টেন্টকে কেন্দ্রে রেখে প্যাড করার জন্য -->
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center py-4 md:py-6">
             
-            <!-- Left Group: JAGORON and Home -->
-            <div class="flex flex-col md:flex-row items-center mb-4 md:mb-0">
-                <!-- JAGORON Text -->
-                <div class="text-3xl font-extrabold text-indigo-600 tracking-wider mb-2 md:mb-0 md:mr-6">
-                    <!-- Updated: Link to Home page URL -->
-                    <a href="https://jagoronculturalsio.github.io/home/">JAGORON</a>
+            <!-- বাম গ্রুপ: জাগরণ (লুকানো মোবাইল) এবং হোম বাটন -->
+            <div class="flex items-center">
+                <!-- জাগরণ টেক্সট: মোবাইলে লুকানো, md ব্রেকপয়েন্ট থেকে দৃশ্যমান -->
+                <div class="hidden md:block text-3xl font-extrabold text-indigo-600 tracking-wider md:mr-6">
+                    <a href="https://jagaranculturalsio.github.io/home/">জাগরণ</a>
                 </div>
-                <!-- Home Button (Standard) -->
-                <a href="https://jagoronculturalsio.github.io/home/" id="homeButton" 
-                   class="nav-button px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
+                <!-- হোম বাটন -->
+                <a href="https://jagaranculturalsio.github.io/home/" id="homeButton" 
+                   class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
                     Home
                 </a>
             </div>
             
-            <!-- Right Group: Nav Links (About, Contact, Address, Ticket) -->
-            <nav class="flex flex-wrap justify-center space-x-2 md:space-x-4 font-semibold">
-                <!-- About Button (Highlighted/Active) -->
-                <!-- Updated: Link to About page URL -->
-                <a href="https://jagoronculturalsio.github.io/about/" class="nav-button nav-active px-4 py-2 rounded-lg transition duration-300">About</a>
-                <!-- Links below point to conceptual file names -->
-                <!-- Updated: Link to Contact page URL -->
-                <a href="https://jagoronculturalsio.github.io/contact/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Contact</a>
-                <!-- Updated: Link to Address page URL -->
-                <a href="https://jagoronculturalsio.github.io/address/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Address</a>
-                <!-- TickeT button - Standard style, link is handled by JS -->
-                <button id="navTicketButton" 
-                    class="nav-button text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-300 shadow-sm border border-gray-200"
-                    onclick="handleTicketClick()">
+            <!-- ডান গ্রুপ: ন্যাভ লিংক (About, Contact, Location, Ticket) -->
+            <nav class="flex space-x-0.5 md:space-x-4 font-semibold">
+                <!-- About সক্রিয় বাটন -->
+                <a href="https://jagaranculturalsio.github.io/about/" 
+                   class="nav-button nav-active text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg transition duration-300">
+                   About
+                </a>
+                <!-- Contact লিংক -->
+                <a href="https://jagaranculturalsio.github.io/contact/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Contact</a>
+                <a href="https://jagaranculturalsio.github.io/address/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Location</a>
+                <!-- Ticket লিংক -->
+                <a href="https://jagaranculturalsio.github.io/ticket/" id="navTicketButton" 
+                    class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
                     Ticket
-                </button>
+                </a>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        <main class="space-y-12">
+    <div id="app" class="container mx-auto p-4 md:p-8 pt-0"> <!-- pt-0 added to negate mb-12 from header -->
 
-            <!-- About Page Content -->
+        <main class="space-y-12 pt-12"> <!-- স্টিকি ন্যাভিগেশনের নিচে কন্টেন্টের জন্য অতিরিক্ত টপ প্যাডিং -->
+            
+            <!-- আমাদের সম্পর্কে পেজের বিষয়বস্তু -->
             <section id="about" class="about-card">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-6 border-b pb-3">
-                    About JAGORON - The Annual Cultural Awakening
+                    জাগরণ সম্পর্কে - বার্ষিক সাংস্কৃতিক জাগরণ
                 </h1>
                 
                 <div class="text-gray-600 space-y-6 text-lg">
                     <p>
-                        **JAGORON** is more than just a cultural program; it is an annual pilgrimage for artists, performers, and enthusiasts dedicated to celebrating the rich tapestry of our heritage. Founded a decade ago, our mission is to provide a vibrant, inclusive platform for both emerging and established talent.
+                        জাগরণ কেবল একটি সাংস্কৃতিক অনুষ্ঠান নয়; এটি শিল্পী, অভিনয়শিল্পী এবং উত্সাহীদের জন্য একটি বার্ষিক তীর্থযাত্রা, যা আমাদের ঐতিহ্যের সমৃদ্ধ বুনন উদযাপন করতে নিবেদিত। এক দশক আগে প্রতিষ্ঠিত, আমাদের লক্ষ্য হল উদীয়মান এবং প্রতিষ্ঠিত উভয় প্রতিভার জন্যই একটি প্রাণবন্ত, অন্তর্ভুক্তিমূলক প্ল্যাটফর্ম সরবরাহ করা।
                     </p>
                     <p>
-                        The word "Jagoron" translates to 'Awakening,' and that is precisely what we strive to achieve—to awaken the community to the power, beauty, and relevance of traditional and contemporary art forms. Every year, our festival features a diverse range of events, including classical dance, modern music, dramatic theatre, literary discussions, and visual art exhibitions.
+                        “Jagaran” শব্দটির অর্থ হল 'Awakening' (জাগিয়ে তোলা), এবং ঠিক এটিই আমরা অর্জন করার চেষ্টা করি—ঐতিহ্যবাহী এবং সমসাময়িক শিল্পরূপের ক্ষমতা, সৌন্দর্য এবং প্রাসঙ্গিকতার প্রতি সমাজকে জাগ্রত করা। প্রতি বছর, আমাদের উৎসবে শাস্ত্রীয় নৃত্য, আধুনিক সঙ্গীত, নাট্য থিয়েটার, সাহিত্য আলোচনা এবং ভিজ্যুয়াল আর্ট প্রদর্শনী সহ বিভিন্ন ধরণের অনুষ্ঠানের আয়োজন করা হয়।
                     </p>
                     
-                    <h2 class="text-2xl font-bold text-gray-800 pt-4 pb-2">Our Vision</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 pt-4 pb-2">আমাদের লক্ষ্য</h2>
                     <p>
-                        We envision a world where culture is a continuous, living dialogue. JAGORON aims to foster cross-cultural understanding and inspire the next generation of creative minds. We believe that by creating an immersive and dynamic environment, we can help preserve artistic traditions while embracing modern expressions.
+                        আমরা এমন একটি বিশ্বের স্বপ্ন দেখি যেখানে সংস্কৃতি একটি নিরবচ্ছিন্ন, জীবন্ত সংলাপ। জাগরণ আন্তঃসাংস্কৃতিক বোঝাপড়াকে উৎসাহিত করতে এবং পরবর্তী প্রজন্মের সৃজনশীল মনকে অনুপ্রাণিত করতে চায়। আমরা বিশ্বাস করি যে একটি নিমগ্ন এবং গতিশীল পরিবেশ তৈরি করার মাধ্যমে, আমরা আধুনিক অভিব্যক্তিকে আলিঙ্গন করার পাশাপাশি শৈল্পিক ঐতিহ্যগুলি সংরক্ষণ করতে সহায়তা করতে পারি।
                     </p>
 
-                    <h2 class="text-2xl font-bold text-gray-800 pt-4 pb-2">What to Expect</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 pt-4 pb-2">কী আশা করবেন</h2>
                     <ul class="list-disc list-inside space-y-2 pl-4">
-                        <li>**Diverse Performances:** From intricate classical routines to energetic contemporary fusion.</li>
-                        <li>**Workshops & Masterclasses:** Opportunities to learn directly from celebrated artists.</li>
-                        <li>**Artisan Bazaar:** Showcasing traditional crafts and local artistry.</li>
-                        <li>**Culinary Delights:** A selection of regional and international food experiences.</li>
+                        <li>বিভিন্ন ধরনের পরিবেশনা: সূক্ষ্ম শাস্ত্রীয় নৃত্য থেকে শুরু করে প্রাণবন্ত সমসাময়িক ফিউশন।</li>
+                        <li>কর্মশালা ও মাস্টারক্লাস: খ্যাতিমান শিল্পীদের কাছ থেকে সরাসরি শেখার সুযোগ।</li>
+                        <li>কারিগর বাজার: ঐতিহ্যবাহী হস্তশিল্প এবং স্থানীয় শিল্পকলা প্রদর্শন।</li>
+                        <li>রান্নার আনন্দ: আঞ্চলিক এবং আন্তর্জাতিক খাবারের বিভিন্ন অভিজ্ঞতা।</li>
                     </ul>
                 </div>
             </section>
 
-            <!-- Secondary CTA -->
+            <!-- সেকেন্ডারি সিটিএ (Call to Action) -->
             <section class="text-center py-8">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Want to Know Our Story?</h2>
-                <p class="text-gray-500 mb-6">Read our detailed history and meet the organizing committee.</p>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">আমাদের গল্প জানতে চান?</h2>
+                <p class="text-gray-500 mb-6">আমাদের বিস্তারিত ইতিহাস পড়ুন এবং আয়োজক কমিটির সাথে পরিচিত হন।</p>
                 <button 
-                    class="bg-indigo-500 text-white font-semibold px-8 py-3 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg"
-                    onclick="alert('This will link to a detailed history page.')">
-                    Meet the Team
+                    class="cta-button bg-indigo-500 text-white font-semibold px-8 py-3 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg"
+                    onclick="showCustomAlert('এই বাটনটি বিস্তারিত ইতিহাস পেজে নিয়ে যাবে এবং টিমের সাথে পরিচয় করিয়ে দেবে।')">
+                    টিমের সাথে পরিচিত হন
                 </button>
             </section>
 
@@ -120,35 +135,46 @@
     </div>
 
     <script>
-        // --- Configuration & Initialization ---
-        // Updated: Using the external link provided by the user for the Ticket page
-        const TICKET_LINK = "https://jagoronculturalsio.github.io/ticket/"; 
+        // --- কনফিগারেশন ---
+        const TICKET_LINK = "https://jagaranculturalsio.github.io/ticket/"; 
 
-        // --- Firebase/Auth Setup (Mandatory in this environment) ---
+        // --- ফায়ারবেস/অথেন্টিকেশন সেটআপ (এই পরিবেশে বাধ্যতামূলক) ---
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        // Placeholder for future use:
-        // import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        // import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        // দ্রষ্টব্য: পরিবেশের অনুবর্তিতার জন্য অন্তর্ভুক্ত করা হয়েছে।
 
-
-        // --- Interaction Logic: Ticket Button Handler ---
+        // --- ইন্টারঅ্যাকশন লজিক: টিকিট বাটন হ্যান্ডলার ---
         function handleTicketClick() {
-            // Function to handle the Ticket button, ensuring it opens in the SAME tab.
+            // টিকিট বাটনটি হ্যান্ডেল করার ফাংশন, যা নিশ্চিত করে এটি একই ট্যাবে খুলবে।
             window.location.href = TICKET_LINK;
         }
         
-        // Custom modal function instead of alert() for the secondary CTA
-        function alert(message) {
+        // alert()-এর পরিবর্তে কাস্টম মডেল ফাংশন
+        function showCustomAlert(message) {
             console.log("Custom Alert:", message);
-            // In a real application, you would display a styled modal here.
             const modal = document.createElement('div');
-            modal.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000;';
-            modal.innerHTML = `<p>${message}</p><button onclick="this.parentNode.remove()" style="margin-top: 10px; background: #4f46e5; color: white; padding: 5px 10px; border: none; border-radius: 5px;">Close</button>`;
+            // মডেল স্টাইল করার জন্য Tailwind ক্লাস
+            modal.className = 'fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-[9999]';
+            modal.innerHTML = `
+                <div class="bg-white p-6 rounded-xl shadow-2xl max-w-sm mx-4 space-y-4">
+                    <h3 class="text-xl font-bold text-indigo-700">তথ্য</h3>
+                    <p class="text-gray-700">${message}</p>
+                    <button onclick="this.parentNode.parentNode.remove()" 
+                        class="w-full bg-indigo-500 text-white font-semibold py-2 rounded-lg hover:bg-indigo-600 transition duration-300 cta-button">
+                        বন্ধ করুন
+                    </button>
+                </div>
+            `;
             document.body.appendChild(modal);
         }
-        // Note: The original CTA for "Meet the Team" has been updated to use the custom alert function.
 
+        // --- ইনিশিয়ালাইজেশন ---
+        window.addEventListener('load', () => {
+            // লুসাইড আইকন ইনিশিয়ালাইজ করা
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 </html>
