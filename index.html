@@ -57,11 +57,11 @@
             
             <!-- বাম গ্রুপ: জাগরণ (লুকানো মোবাইল) এবং হোম বাটন -->
             <div class="flex items-center">
-                <!-- জাগরণ টেক্সট: মোবাইলে লুকানো, md ব্রেকপয়েন্ট থেকে দৃশ্যমান -->
+                <!-- জাগরণ টেক্সট: লিঙ্ক আপডেট করা হয়েছে -->
                 <div class="hidden md:block text-3xl font-extrabold text-indigo-600 tracking-wider md:mr-6">
                     <a href="https://jagoronculturalsio.github.io/homeb/">জাগরণ</a>
                 </div>
-                <!-- হোম বাটন -->
+                <!-- হোম বাটন: লিঙ্ক আপডেট করা হয়েছে -->
                 <a href="https://jagoronculturalsio.github.io/homeb/" id="homeButton" 
                    class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
                     Home
@@ -70,16 +70,17 @@
             
             <!-- ডান গ্রুপ: ন্যাভ লিংক (About, Contact, Location, Ticket) -->
             <nav class="flex space-x-0.5 md:space-x-4 font-semibold">
-                <!-- About সক্রিয় বাটন -->
-                <a href="https://jagaranculturalsio.github.io/aboutb/" 
+                <!-- About সক্রিয় বাটন: লিঙ্ক আপডেট করা হয়েছে -->
+                <a href="https://jagoronculturalsio.github.io/aboutb/" 
                    class="nav-button nav-active text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg transition duration-300">
                    About
                 </a>
-                <!-- Contact লিংক -->
-                <a href="https://jagaranculturalsio.github.io/contactb/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Contact</a>
-                <a href="https://jagaranculturalsio.github.io/addressb/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Location</a>
-                <!-- Ticket লিংক -->
-                <a href="https://jagaranculturalsio.github.io/ticketb/" id="navTicketButton" 
+                <!-- Contact লিংক: লিঙ্ক আপডেট করা হয়েছে -->
+                <a href="https://jagoronculturalsio.github.io/contactb/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Contact</a>
+                <!-- Location লিংক: লিঙ্ক আপডেট করা হয়েছে -->
+                <a href="https://jagoronculturalsio.github.io/addressb/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Location</a>
+                <!-- Ticket লিংক: লিঙ্ক আপডেট করা হয়েছে -->
+                <a href="https://jagoronculturalsio.github.io/ticketb/" id="navTicketButton" 
                     class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
                     Ticket
                 </a>
@@ -123,7 +124,7 @@
             <!-- সেকেন্ডারি সিটিএ (Call to Action) -->
             <section class="text-center py-8">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">আমাদের গল্প জানতে চান?</h2>
-                
+                <p class="text-gray-500 mb-6">আমাদের বিস্তারিত ইতিহাস পড়ুন এবং আয়োজক কমিটির সাথে পরিচিত হন।</p>
                 <button 
                     class="cta-button bg-indigo-500 text-white font-semibold px-8 py-3 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg"
                     onclick="showCustomAlert('এই বাটনটি বিস্তারিত ইতিহাস পেজে নিয়ে যাবে এবং টিমের সাথে পরিচয় করিয়ে দেবে।')">
@@ -136,7 +137,7 @@
 
     <script>
         // --- কনফিগারেশন ---
-        const TICKET_LINK = "https://jagaranculturalsio.github.io/ticketb/"; 
+        const TICKET_LINK = "https://jagoronculturalsio.github.io/ticketb/"; // কনফিগারেশন লিঙ্ক আপডেট করা হয়েছে
 
         // --- ফায়ারবেস/অথেন্টিকেশন সেটআপ (এই পরিবেশে বাধ্যতামূলক) ---
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -178,5 +179,3 @@
     </script>
 </body>
 </html>
-
-
